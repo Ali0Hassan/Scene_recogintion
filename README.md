@@ -31,6 +31,7 @@ with the following results
 
 At the end we got Training accuracy 98.2% and a Validation accuracy 72.315%
 
+Here is the modified Data Set: https://drive.google.com/file/d/1jwXHF9ajErQYOpyQEAJDpKJiIRUYSt7C/view?usp=sharing 
 
 Here is the final model : https://drive.google.com/file/d/1AvsLkmxl04UfQzAva97L3BhfGJyPYy3E/view?usp=sharing
 
