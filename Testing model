@@ -1,0 +1,36 @@
+# the following test is taking a base64 img into a base 64
+import tensorflow as tf
+import keras
+import cv2
+import os
+import numpy as np
+import base64
+from io import BytesIO
+from PIL import Image
+from base64 import decodestring
+
+model= tf.keras.models.load_model('167Model acc-0.982-0.72315.h5')
+IDs = os.listdir('/content/drive/MyDrive/scene_det/Scene Detection model/IDs')
+
+def single_inference(path, model):
+  classes=['auditorium', 'bakery', 'bathroom', 'bedroom', 'bookstore', 'children_room', 'church_inside', 'classroom', 'clothingstore', 'concert_hall', 'corridor', 'deli', 'dining_room', 'fastfood_restaurant', 'florist', 'grocerystore', 'gym', 'hairsalon', 'hospitalroom', 'inside_mosque', 'inside_subway', 'kindergarden', 'kitchen', 'laundry', 'library', 'livingroom', 'lobby', 'mall', 'meeting_room', 'nursery', 'office', 'pantry', 'poolinside', 'restaurant', 'shoeshop', 'stairscase', 'toystore', 'waitingroom', 'warehouse']
+  
+  img= cv2.imread(path, cv2.IMREAD_UNCHANGED)
+  # cv2_imshow(img)
+  img= cv2.resize(img, (150, 150), interpolation = cv2.INTER_AREA)
+  img= img.reshape((1,150,150,3))
+  pred= model.predict(img)
+  print ('Predicted class:', classes[np.argmax(pred)])
+
+def classify_place(ID, base64Image):
+  if ID not in IDs:
+    os.makedirs('IDs/'+ ID)     
+
+  jpgImage = base64.b64decode(base64Image)
+
+  with open("IDs/"+ID+"/test_b64.jpg", "wb") as fnew:   #saving image
+     fnew.write(jpgImage)
+
+  output =  single_inference("IDs/"+ID+"/test_b64.jpg",model)
+
+  return(output)
