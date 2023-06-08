@@ -20,14 +20,14 @@ hand the training accuracy was + 80% which is a very huge gap and a low
 accuracy too.
 After the new dataset I tried again, and we got a noticeable progress
 
-
 I got + 60% validation accuracy and +95% training accuracy but still there is a 
 gap between them (Over Fitting)…
 
 After some research I found out that the most common dropout ratios are 
 between 0.5, 0.8 and I was using a 0.25 dropout ratio so I started to 
 train the model using 0.5, 0.75, 0.85, 0.8 and the best I could get so far is 0.8 
-with the following results in Figure 33.
+with the following results
+![progress](https://github.com/Ali0Hassan/Scene_recogintion/assets/92372680/15c6ecf6-5f4e-4c14-94d9-8a8e31bbe2da)
 
 At the end we got Training accuracy 98.2% and a Validation accuracy 72.315%
 
